@@ -1,0 +1,14 @@
+.spoilerText {
+	text-align: left;
+	color: #C9A014;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.spoilerText:hover {
+	color: #ECC748;
+}
+
+.spoilerText:active {
+	text-decoration: underline;
+}
