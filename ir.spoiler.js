@@ -74,8 +74,10 @@
 		var setup = function() {
 			// creamos y añadimos el controlador del spoiler
 			if (spoiler.settings.controllerType === 'text') {
+				// Tipo texto
 				spoiler.control = $("<p></p>");
 			} else {
+				// Tipo icono
 				spoiler.control = $("<img src='' />");
 			}
 			// Comprobamos donde debemos colocar el controlador
@@ -92,15 +94,19 @@
 				el.hide();
 				// Tipo de control
 				if (spoiler.settings.controllerType === 'text') {
+					// Asignamos el texto de mostrado
 					spoiler.control.text(spoiler.settings.textShow);
 				} else {
+					// Asignamos el icono de mostrado
 					spoiler.control.attr("src", spoiler.settings.iconShow);
 				}
 			} else {
 				// Tipo de control
 				if (spoiler.settings.controllerType === 'text') {
+					// Asignamos el texto de ocultado
 					spoiler.control.text(spoiler.settings.textHide);
 				} else {
+					// Asignamos el icono de mostrado
 					spoiler.control.attr("src", spoiler.settings.iconHide);
 				}
 			}
@@ -112,9 +118,12 @@
 		 * Establece el CSS para el controlador
 		 */
 		var setControllerStyle = function() {
+			// Comprobamos si asignaron una clase css
 			if (spoiler.settings.controllerCssClass != null) {
+				// Asignamos la clase
 				spoiler.control.addClass(spoiler.settings.controllerCssClass);
 			} else {
+				// Asignamos la clase por defecto segun el tipo de controlador
 				if (spoiler.settings.controllerType === 'text') {
 					spoiler.control.addClass('spoilerText');
 				} else {
@@ -142,6 +151,12 @@
 				} else {
 					el.hide(spoiler.settings.closeDuration, spoiler.settings.onSpoilerHideEnd);
 				}
+				if (spoiler.settings.controllerType === 'text'){
+					spoiler.control.text(spoiler.settings.textShow);
+				} else {
+					// TODO icon
+				}
+					
 			} else {
 				// MOSTRAMOS
 				// on Init
@@ -153,6 +168,11 @@
 					el.fadeIn(spoiler.settings.openDuration, spoiler.settings.onSpoilerShowEnd);
 				} else {
 					el.show(spoiler.settings.openDuration, spoiler.settings.onSpoilerShowEnd);
+				}
+				if (spoiler.settings.controllerType === 'text'){
+					spoiler.control.text(spoiler.settings.textHide);
+				} else {
+					// TODO icon
 				}
 			}
 			e.preventDefault();
@@ -175,6 +195,11 @@
 				spoiler.control.trigger("click");
 			} else {
 				el.show();
+				if (spoiler.settings.controllerType === 'text'){
+					spoiler.control.text(spoiler.settings.textHide);
+				} else {
+					// TODO icon
+				}
 			}
 		}
 
@@ -188,6 +213,11 @@
 			if (useSettings) {
 				spoiler.control.trigger("click");
 			} else {
+				if (spoiler.settings.controllerType === 'text'){
+					spoiler.control.text(spoiler.settings.textShow);
+				} else {
+					// TODO icon
+				}
 				el.hide();
 			}
 		}
